@@ -4,24 +4,15 @@
   <div class="columns">
     <div class="column">
       <p>Dans l'ordre du Pokédex : </p>
+      <p *ngIf=pokemonSelectionne>Le Pokémon sélectionné
+        est : {{pokemonSelectionne}}</p>
     </div>
   </div>
   <div class="columns is-multiline">
     <ul class="menu-list column is-one-third" *ngFor="let pokemon of pokemons">
       <li>
-        <ul class="menu-list">
-          <img src="{{pokemon.img}}"/>
-          <li>Nom : {{pokemon.nom}}</li>
-          <li>Catégorie : <span *ngIf="pokemon.categorie;
-          else na">{{pokemon.categorie}}</span></li>
-          <li>Type : <span *ngIf="pokemon.type;
-          else na">{{pokemon.type}}</span></li>
-          <li>Taille : <span *ngIf="pokemon.taille;
-          else na">{{pokemon.taille | number:'1.0-2'}} m</span></li>
-          <li>Poids : <span *ngIf="pokemon.taille;
-          else na">{{pokemon.poids | number: '1.0-2'}} kg</span></li>
-          <ng-template #na>N/A</ng-template>
-        </ul>
+        <app-pokemon [pokemon]=pokemon (evenementClicImage)="pokemonSelectionne=$event"></app-pokemon>
+<!--            <app-pokemon [pokemon]=pokemon></app-pokemon>-->
       </li>
     </ul>
   </div>
