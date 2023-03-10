@@ -1,6 +1,7 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {Pokemon} from "../../modeles/Pokemon";
 import {PokemonsService} from "../../services/pokemons.service";
+import { faOptinMonster } from "@fortawesome/free-brands-svg-icons";
 
 
 @Component({
@@ -40,6 +41,9 @@ export class PokemonsComponent implements OnInit{
 
   pokemons : Pokemon[] = [];
   compte = 0;
+  faOptinMonster = faOptinMonster;
+  rechercherPokemon = new Pokemon(0, ' ', ' ', ' ',[' '], 0, 0);
+
 
 
   @Output()   public pokemonSelectionne: Pokemon | null;
@@ -49,13 +53,29 @@ export class PokemonsComponent implements OnInit{
   //   this.pokemonSelectionne = null;
   //
   // }
+
   constructor(private servicePokemons: PokemonsService) {
     this.pokemonSelectionne = null;
-
   }
   ngOnInit() {
     this.pokemons = this.servicePokemons.getPokemons();
     this.compte = this.servicePokemons.comptagePokemons();
+  }
+
+  rechercher(nomDuPokemon: string){
+    this.pokemons = this.servicePokemons.rechercherPokemon(nomDuPokemon);
+  }
+
+  annulerRecherche(){
+    this.pokemons = this.servicePokemons.getPokemons();
+    this.rechercherPokemon.nomRechercher('');
+
+  }
+
+  verificationExistancePokemon(tableauDePokemon: Pokemon[]): string | void {
+    if (tableauDePokemon?.length<1){
+      return 'Auncun de pokémon correspond';
+    }
   }
 
 }

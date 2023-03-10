@@ -19,9 +19,6 @@ export class PokemonComponent implements OnInit {
     this.pokemonSelectionne = null;
   }
 
-
-
-
   ngOnInit(): void {
   }
 

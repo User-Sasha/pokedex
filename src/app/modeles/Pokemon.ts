@@ -75,5 +75,8 @@ export class Pokemon {
     this._poids = value;
   }
 
+  nomRechercher(value: string) {
+    this._nom = value;
+  }
 
 }
