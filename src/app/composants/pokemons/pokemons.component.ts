@@ -43,16 +43,12 @@ export class PokemonsComponent implements OnInit{
   compte = 0;
   faOptinMonster = faOptinMonster;
   rechercherPokemon = new Pokemon(0, ' ', ' ', ' ',[' '], 0, 0);
+  easterEggs = false;
 
 
 
   @Output()   public pokemonSelectionne: Pokemon | null;
 
-
-  // constructor() {
-  //   this.pokemonSelectionne = null;
-  //
-  // }
 
   constructor(private servicePokemons: PokemonsService) {
     this.pokemonSelectionne = null;
@@ -64,6 +60,10 @@ export class PokemonsComponent implements OnInit{
 
   rechercher(nomDuPokemon: string){
     this.pokemons = this.servicePokemons.rechercherPokemon(nomDuPokemon);
+    this.easterEggs = false;
+    if (nomDuPokemon == 'C3PO') {
+      this.easterEggs = true;
+    }
   }
 
   annulerRecherche(){
