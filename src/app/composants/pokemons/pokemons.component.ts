@@ -41,7 +41,7 @@ export class PokemonsComponent implements OnInit{
 
   pokemons : Pokemon[] = [];
   compte = 0;
-  faOptinMonster = faOptinMonster;
+  //faOptinMonster = faOptinMonster;
   rechercherPokemon = new Pokemon(0, ' ', ' ', ' ',[' '], 0, 0);
   easterEggs = false;
 

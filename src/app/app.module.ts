@@ -16,6 +16,7 @@ import { BarreDeNavigationComponent } from './composants/barre-de-navigation/bar
 import {RouterOutlet} from "@angular/router";
 import { CreationComponent } from './composants/compte/creation/creation.component';
 import { ConnectionComponent } from './composants/compte/connection/connection.component';
+import {HttpClientModule} from "@angular/common/http";
 registerLocaleData(localeFR);
 
 @NgModule({
@@ -31,7 +32,8 @@ registerLocaleData(localeFR);
   imports: [
     BrowserModule,
     FormsModule,
-    RouterOutlet
+    RouterOutlet,
+    HttpClientModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]
