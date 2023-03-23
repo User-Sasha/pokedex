@@ -1,12 +1,12 @@
-import {Generation} from "./Generation";
+import {ResultApi} from "./ResultApi";
 
 export class GenerationAPI {
   count: number;
-  results: [Generation];
+  results: ResultApi[];
 
   constructor() {
     this.count = 0;
-    this.results = [new Generation('','')];
+    this.results = [];
   }
 
 }

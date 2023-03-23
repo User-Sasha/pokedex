@@ -1,13 +1,25 @@
-<ul class="menu-list">
-  <img src="{{pokemon.img}}" (click)="clicSurImage(pokemon.nom)" />
-  <li>Nom : {{pokemon.nom}}</li>
-  <li>Catégorie : <span *ngIf="pokemon.categorie;
-          else na">{{pokemon.categorie}}</span></li>
-  <li>Type : <span *ngIf="pokemon.type;
-          else na">{{pokemon.type}}</span></li>
-  <li>Taille : <span *ngIf="pokemon.taille;
-          else na">{{pokemon.taille | number:'1.0-2'}} m</span></li>
-  <li>Poids : <span *ngIf="pokemon.taille;
-          else na">{{pokemon.poids | number: '1.0-2'}} kg</span></li>
+<ul class="menu-list" *ngIf="pokemon">
+  <img src="{{pokemon.sprites.front_default}}" (click)="clicSurImage(pokemon.name)" />
+  <li>Nom : {{pokemon.name}}</li>
+  <li>Catégories : <span *ngIf="pokemon.egg_groups; else na">
+                    <div *ngFor="let element of pokemon.egg_groups">
+                      <UL>
+                       <LI>{{element.name}}
+                      </UL>
+                    </div>
+                  </span>
+  </li>
+  <li>Type : <span *ngIf="pokemon.types; else na">
+              <div *ngFor="let element of pokemon.types">
+                <UL>
+                 <LI>{{element.type.name}}
+                </UL>
+              </div>
+            </span>
+  </li>
+  <li>Taille : <span *ngIf="pokemon.height;
+          else na">{{pokemon.height | number:'1.0-2'}} m</span></li>
+  <li>Poids : <span *ngIf="pokemon.height;
+          else na">{{pokemon.weight | number: '1.0-2'}} kg</span></li>
   <ng-template #na>N/A</ng-template>
 </ul>

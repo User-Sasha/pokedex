@@ -13,30 +13,30 @@
         <div class="field has-addons">
           <div class="control has-icons-left">
             <input class="input is-small" name="pokemonRecherche" type="test" placeholder="Nom du Pokémon"
-            [(ngModel)]="rechercherPokemon.nom"
-            (keyup)="rechercher(rechercherPokemon.nom)"
+            [(ngModel)]="rechercherPokemon"
+            (keyup)="rechercher(rechercherPokemon)"
             pattern="[a-zA-Z|\s 3]*" [class.is-danger]="form.invalid">
             <span class="icon is-small is-left">
-              <i class="fa fa-optin-monster" aria-hidden="true"></i>
+              <i class="fa-optin-monster" aria-hidden="true"></i>
             </span>
             <div *ngIf="form.invalid" class="tag is-danger is-light">Le champ de saisie ne doit contenir que des lettres.</div>
             <div *ngIf="easterEggs"><img src="https://media.giphy.com/media/3o7bu1nVSxNQUWMAZa/giphy.gif"></div>
             </div>
         </div>
         <div class="control">
-          <a class="button is-primary is-small" (click)="rechercher(rechercherPokemon.nom)" [class.is-danger]="form.invalid">Rechercher</a>
+          <a class="button is-primary is-small" (click)="rechercher(rechercherPokemon)" [class.is-danger]="form.invalid">Rechercher</a>
         </div>
-          <div class="control">
-            <a class="button is-light is-small" (click)="annulerRecherche()">Annuler</a>
-          </div>
+<!--          <div class="control">-->
+<!--            <a class="button is-light is-small" (click)="annulerRecherche()">Annuler</a>-->
+<!--          </div>-->
       </form>
     </div>
   </div>
-  <div>{{verificationExistancePokemon(pokemons)}}</div>
+<!--  <div>{{verificationExistancePokemon(pokemons)}}</div>-->
   <div class="columns is-multiline">
-    <ul class="menu-list column is-one-third" *ngFor="let pokemon of pokemons">
+    <ul class="menu-list column is-one-third" >
       <li>
-        <app-pokemon [pokemon]=pokemon (evenementClicImage)="pokemonSelectionne=$event"></app-pokemon>
+        <app-pokemon *ngFor="let pokemon of pokemons" [url]=pokemon.url (evenementClicImage)="pokemonSelectionne=$event"></app-pokemon>
       </li>
     </ul>
   </div>

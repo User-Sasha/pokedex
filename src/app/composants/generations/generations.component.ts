@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PokemonsService} from "../../services/pokemons.service";
-import {Generation} from "../../modeles/Generation";
+import {ResultApi} from "../../modeles/ResultApi";
 
 @Component({
   selector: 'app-generations',
@@ -9,19 +9,18 @@ import {Generation} from "../../modeles/Generation";
 })
 export class GenerationsComponent implements OnInit {
 
-  generations: [Generation];
+  generations: ResultApi[];
   nbreDeGenerations: number;
 
 
   constructor(private servicePokemons: PokemonsService) {
     this.nbreDeGenerations = 0;
-    this.generations = [new Generation('','')];
+    this.generations = [];
   }
 
   ngOnInit(){
     this.servicePokemons.getGenerations().subscribe(resultat => {
       this.generations = resultat.results;
-      console.log(resultat.results);
       this.nbreDeGenerations = resultat.count;
     });
   }
